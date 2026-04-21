@@ -1,0 +1,67 @@
+---
+interface Props {
+  heading: string;
+  introText?: string;
+  introSub?: string;
+  afterText?: string;
+  bullets: { text: string }[];
+  quoteHighlight?: string;
+  quoteSub?: string;
+  closingLines?: string[];
+}
+
+const {
+  heading,
+  introText,
+  introSub,
+  afterText,
+  bullets,
+  quoteHighlight,
+  quoteSub,
+  closingLines = [],
+} = Astro.props;
+---
+
+<section class="w-full bg-[#0a0a0a] py-16 md:py-24 border-t border-yellow-500/10">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight" set:html={heading} />
+
+    {introText && (
+      <p class="text-gray-400 text-lg mb-10">
+        {introText}
+        {introSub && (
+          <>
+            <br />
+            <span class="text-gray-300">{introSub}</span>
+          </>
+        )}
+      </p>
+    )}
+
+    {afterText && <p class="text-white font-bold text-lg mb-6">{afterText}</p>}
+
+    <div class="text-left space-y-4 mb-10 max-w-2xl mx-auto">
+      {bullets.map((bullet) => (
+        <div class="flex items-start gap-3 bg-zinc-900/60 border border-zinc-800 rounded-xl p-4">
+          <span class="text-green-400 font-bold mt-0.5 shrink-0">→</span>
+          <p class="text-gray-300 leading-relaxed" set:html={bullet.text} />
+        </div>
+      ))}
+    </div>
+
+    {quoteHighlight && (
+      <div class="border-l-4 border-yellow-500 pl-6 py-3 text-left mb-10 max-w-2xl mx-auto">
+        <p class="text-yellow-400 font-bold text-xl leading-snug mb-2">{quoteHighlight}</p>
+        {quoteSub && <p class="text-gray-400 text-base">{quoteSub}</p>}
+      </div>
+    )}
+
+    {closingLines.length > 0 && (
+      <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 max-w-2xl mx-auto">
+        {closingLines.map((line) => (
+          <p class="text-gray-300 text-base leading-relaxed" set:html={line} />
+        ))}
+      </div>
+    )}
+  </div>
+</section>

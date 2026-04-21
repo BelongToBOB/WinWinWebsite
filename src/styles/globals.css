@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Font "Prompt" loaded via <link> in BaseLayout.astro */
+
+/* ─── Theme tokens (from SalePageInsideBank source) ─── */
+@theme {
+  --font-sans: "Prompt", sans-serif;
+
+  /* Yellow accent */
+  --color-yellow-accent: #facc15;
+  --color-yellow-glow: rgba(250, 204, 21, 0.3);
+  --color-yellow-glow-soft: rgba(250, 204, 21, 0.15);
+
+  /* Social buttons */
+  --color-line: #00b900;
+  --color-line-hover: #009b00;
+  --color-facebook: #1877f1;
+  --color-facebook-hover: #0e65d0;
+  --color-instagram-from: #f58529;
+  --color-instagram-via: #dd2a7b;
+  --color-instagram-to: #8134af;
+  --color-tiktok: #010101;
+}
+
+/* ─── Base styles ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Prompt", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Selection highlight ─── */
+::selection {
+  background-color: rgba(250, 204, 21, 0.3);
+}
+
+/* ─── Glass shine animation (from BUC source) ─── */
+@keyframes glass-shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-glass-shine {
+  background-size: 200% auto;
+  animation: glass-shine 3s linear infinite;
+}

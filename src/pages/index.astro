@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import LandingHero from "../components/landing/LandingHero.astro";
+import LandingAbout from "../components/landing/LandingAbout.astro";
+import LandingServices from "../components/landing/LandingServices.astro";
+import LandingCTA from "../components/landing/LandingCTA.astro";
+---
+
+<BaseLayout
+  title="WinWin Consult - ที่ปรึกษาการเงินสำหรับเจ้าของธุรกิจ | สร้างธุรกิจโดยไม่ใช้เงินตัวเอง"
+>
+  <Navbar />
+  <main>
+    <LandingHero />
+    <LandingAbout />
+    <LandingServices />
+    <LandingCTA />
+  </main>
+  <Footer />
+</BaseLayout>

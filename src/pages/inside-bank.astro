@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import HeroKV from "../components/sections/HeroKV.astro";
+import PainPoints from "../components/sections/PainPoints.astro";
+import SolutionTransition from "../components/sections/SolutionTransition.astro";
+import InstructorProfile from "../components/sections/InstructorProfile.astro";
+import FeaturesAndBonuses from "../components/sections/FeaturesAndBonuses.astro";
+import KVPosterCards from "../components/sections/KVPosterCards.astro";
+import PhotoTestimonials from "../components/sections/PhotoTestimonials.astro";
+import VideoTestimonials from "../components/sections/VideoTestimonials.astro";
+import SeminarGallery from "../components/sections/SeminarGallery.astro";
+import ContactCTA from "../components/sections/ContactCTA.astro";
+
+import { insideBankData as d } from "../data/inside-bank";
+---
+
+<BaseLayout
+  title="Inside Bank — เข้าใจโครงสร้างเงินธุรกิจในมุมมองแบงก์จริง | WinWin Wealth"
+  description={d.meta.description}
+>
+  <Navbar />
+  <main>
+    <HeroKV
+      heroImage={d.hero.heroImage}
+      heroAlt={d.hero.heroAlt}
+      headline={d.hero.headline}
+      description={d.hero.description}
+      instructor={d.hero.instructor}
+    />
+
+    <!-- Sales Pitch Section -->
+    <section class="w-full bg-[#0a0a0a] py-16 md:py-24 border-t border-yellow-500/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight" set:html={d.sectionHeadline.heading} />
+          {d.sectionHeadline.subheading && (
+            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed" set:html={d.sectionHeadline.subheading} />
+          )}
+        </div>
+
+        <div class="max-w-4xl mx-auto flex flex-col space-y-8">
+          <PainPoints heading={d.painPoints.heading} items={d.painPoints.items} />
+          <SolutionTransition text={d.solution.text} highlight={d.solution.highlight} />
+          <InstructorProfile name={d.instructor.name} role={d.instructor.role} bio={d.instructor.bio} />
+        </div>
+
+        <FeaturesAndBonuses
+          features={d.features}
+          bonuses={d.bonuses}
+          pricing={d.pricing}
+          pricingTag={d.pricingTag}
+        />
+
+        <!-- Closing headline -->
+        <div class="mt-16 md:mt-20 text-center max-w-4xl mx-auto px-4">
+          <p class="text-2xl md:text-3xl font-bold text-white mb-6 leading-relaxed" set:html={d.closing.headline} />
+          {d.closing.highlight && (
+            <p class="text-xl md:text-2xl text-yellow-400 font-medium pb-4 leading-relaxed">{d.closing.highlight}</p>
+          )}
+        </div>
+
+        {d.kvPosterCards && <KVPosterCards images={d.kvPosterCards} />}
+      </div>
+    </section>
+
+    <PhotoTestimonials photos={d.photos} />
+    <VideoTestimonials videos={d.videos} />
+    {d.seminarImages && <SeminarGallery images={d.seminarImages} />}
+
+    <ContactCTA />
+  </main>
+  <Footer />
+</BaseLayout>

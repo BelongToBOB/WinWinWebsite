@@ -1,0 +1,39 @@
+---
+interface Props {
+  faqs: { q: string; a: string }[];
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  faqs,
+  heading = "คำถามที่พบบ่อย",
+  subheading = "หากมีคำถาม แอดไลน์ @WIN_WIN",
+} = Astro.props;
+---
+
+<section class="w-full bg-black py-16 md:py-24 border-t border-zinc-900">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">{heading}</h2>
+      {subheading && <p class="text-gray-400">{subheading}</p>}
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, i) => (
+        <details class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none select-none">
+            <span class="text-white font-medium text-base leading-snug">
+              <span class="text-yellow-400/70 text-sm font-bold mr-2">Q{i + 1}</span>
+              {faq.q}
+            </span>
+            <span class="text-yellow-400 shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl font-light">+</span>
+          </summary>
+          <div class="px-5 pb-5 pt-1">
+            <p class="text-gray-400 text-base leading-relaxed border-t border-zinc-800 pt-4">{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
