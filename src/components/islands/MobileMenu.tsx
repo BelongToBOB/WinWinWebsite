@@ -16,12 +16,10 @@ export default function MobileMenu({ navLinks, courseLinks, currentPath }: Props
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Wait for client mount before using portal
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Close on ESC
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -31,7 +29,6 @@ export default function MobileMenu({ navLinks, courseLinks, currentPath }: Props
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen]);
 
-  // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";

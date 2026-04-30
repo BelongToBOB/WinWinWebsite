@@ -4,6 +4,7 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import ContactCTA from "../components/sections/ContactCTA.astro";
 import FAQAccordion from "../components/islands/FAQAccordion.tsx";
+import PaymentChannels from "../components/sections/PaymentChannels.astro";
 ---
 
 <BaseLayout
@@ -752,6 +753,11 @@ import FAQAccordion from "../components/islands/FAQAccordion.tsx";
       { question: "คลาสนี้รับประกันว่าเรียนแล้วกู้ผ่านไหม?", answer: "ไม่ค่ะ และวินไม่เคยรับประกันแบบนั้น แต่สิ่งที่คลาสนี้รับประกันได้คือ คุณจะเข้าใจมุมมองของธนาคาร และรู้ว่าตัวเองอยู่ตรงไหน" },
       { question: "ติดเครดิตบูโรเรียนได้ไหม? จะกู้ผ่านไหม?", answer: "เรียนได้แน่นอนค่ะ แต่ \"กู้ผ่าน\" ต้องดูเป็นเคสๆ ไป คลาสนี้แยก 4 Case ของการติดบูโรให้คุณเห็น พร้อม 4 ทางที่ยังมีโอกาสกู้ได้" },
     ]} />
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- Payment Channels -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <PaymentChannels />
 
     <!-- ═══════════════════════════════════════════════════════ -->
     <!-- S13: ClosingCTA -->
